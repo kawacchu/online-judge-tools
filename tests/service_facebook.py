@@ -38,7 +38,7 @@ class FacebookHackerCupProblemTest(unittest.TestCase):
             10000 6011 4543
             434894347 263348046 2565 3970 1267 622277910
             524251054 294718567 0 1 3718 689139248
-            """) + '\n').encode()
+            """) + '\n')
         sample_output = (inspect.cleandoc("""
             Case #1: 4
             Case #2: 5
@@ -46,7 +46,7 @@ class FacebookHackerCupProblemTest(unittest.TestCase):
             Case #4: 3
             Case #5: 45
             Case #6: 766791757
-            """) + '\n').encode()
+            """) + '\n')
         self.assertEqual(problem.download_sample_cases(), [
             TestCase(
                 'sample',

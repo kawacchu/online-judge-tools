@@ -15,6 +15,7 @@ import onlinejudge._implementation.utils as utils
 import onlinejudge.type
 from onlinejudge.type import TestCase
 
+import bs4
 
 class FacebookHackerCupService(onlinejudge.type.Service):
     def get_url(self) -> str:
@@ -49,9 +50,9 @@ class FacebookHackerCupProblem(onlinejudge.type.Problem):
         sample = TestCase(
             'sample',
             utils.remove_prefix(resp_in.headers['Content-Disposition'], 'attachment;filename='),
-            resp_in.content,
+            utils.parse_content(bs4.NavigableString(resp_in.content)),
             utils.remove_prefix(resp_out.headers['Content-Disposition'], 'attachment;filename='),
-            resp_out.content,
+            utils.parse_content(bs4.NavigableString(resp_out.content)),
         )
         return [sample]
 
